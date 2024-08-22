@@ -3,7 +3,7 @@ package com.training.webapp.dtos;
 public class RegisterUserDto {
     private String email;
     private String password;
-    private String name;
+    private String fullName;
 
     public String getEmail() {
         return email;
@@ -23,12 +23,12 @@ public class RegisterUserDto {
         return this;
     }
 
-    public String getname() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public RegisterUserDto setname(String name) {
-        this.name = name;
+    public RegisterUserDto setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 
@@ -37,7 +37,7 @@ public class RegisterUserDto {
         return "RegisterUserDto{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
                 '}';
     }
 }

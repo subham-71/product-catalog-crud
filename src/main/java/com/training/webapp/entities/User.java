@@ -1,5 +1,5 @@
-package com.training.webapp.entities;
 
+package com.training.webapp.entities;
 
 import java.util.Collection;
 import java.util.Date;
@@ -8,16 +8,20 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Table(name = "users1")
+@Table(name = "users7")
 @Entity
 public class User implements UserDetails {
     @Id
@@ -26,7 +30,7 @@ public class User implements UserDetails {
     private Integer id;
 
     @Column(nullable = false)
-    private String name;
+    private String fullName;
 
     @Column(unique = true, length = 100, nullable = false)
     private String email;
@@ -42,9 +46,15 @@ public class User implements UserDetails {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role.getName().toString());
+
+        return List.of(authority);
     }
 
     public String getPassword() {
@@ -85,12 +95,12 @@ public class User implements UserDetails {
         return this;
     }
 
-    public String getname() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public User setname(String name) {
-        this.name = name;
+    public User setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 
@@ -126,11 +136,20 @@ public class User implements UserDetails {
         return this;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public User setRole(Role role) {
+        this.role = role;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", createdAt=" + createdAt +
@@ -138,3 +157,4 @@ public class User implements UserDetails {
                 '}';
     }
 }
+
