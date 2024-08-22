@@ -1,0 +1,17 @@
+com/training/webapp/responses/LoginResponse.class
+com/training/webapp/config/SecurityConfiguration.class
+com/training/webapp/entities/User.class
+com/training/webapp/controllers/AuthenticationController.class
+com/training/webapp/services/JwtService.class
+com/training/webapp/config/ApplicationConfiguration.class
+com/training/webapp/repositories/ProductRepository.class
+com/training/webapp/controllers/AdminProductController.class
+com/training/webapp/services/AuthenticationService.class
+com/training/webapp/services/ProductService.class
+com/training/webapp/entities/Product.class
+com/training/webapp/dtos/RegisterUserDto.class
+com/training/webapp/WebappApplication.class
+com/training/webapp/config/JwtAuthenticationFilter.class
+com/training/webapp/repositories/UserRepository.class
+com/training/webapp/controllers/ProductController.class
+com/training/webapp/dtos/LoginUserDto.class
