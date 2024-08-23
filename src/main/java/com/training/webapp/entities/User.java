@@ -21,7 +21,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Table(name = "users7")
+@Table(name = "usersv0")
 @Entity
 public class User implements UserDetails {
     @Id
